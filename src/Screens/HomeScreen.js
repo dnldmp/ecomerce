@@ -1,13 +1,25 @@
-import React from 'react';
-import data from '../data';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { listProducts } from '../actions/productAction';
 
 function HomeScreen(props) {
-    return (
+  const productList = useSelector(state =>  state.productList);
+  const { products, loading, error } = productList;
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(listProducts())
+    return () => {
+
+    }
+  }, [])
+    return loading ? <div>loading...</div> : 
+      error ? <div>{error}</div> : 
         <ul className="products">
               {
-                data.products.map(product =>
-                  <li>
+                products.map(product =>
+                  <li key={product._id}>
                     <div className="product">
                       <Link to={`/product/${product._id}`}>
                         <img className="productImage" src={product.image} alt="product" />
@@ -22,8 +34,7 @@ function HomeScreen(props) {
                   </li>
                 )
               }     
-        </ul>
-    )
+        </ul>  
 }
 
 export default HomeScreen;

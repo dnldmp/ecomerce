@@ -27,12 +27,14 @@ function CartScreen(props){
                         <div>Cart is empty</div>
                     :
                     cartItems.map(item => 
-                        <div>
-                            <img src={item.image} alt="product" />
+                        <li>
+                            <div className="cart-image">
+                                <img src={item.image} alt="product" />
+                            </div>
                             <div className="cart-name">
                                 {item.name}
                             </div>
-                            <div className="cart-name">
+                            <div>
                                 Qty <select>
                                    <option>1</option> 
                                    <option>2</option>
@@ -42,13 +44,20 @@ function CartScreen(props){
                             <div className="cart-price">
                                 {item.price}
                             </div>
-                        </div>    
+                        </li>    
                     )
                 }
             </ul>
         </div>
         <div className="cart-action">
-
+                <h3>
+                    Subtotal ( {cartItems.reduce((acumulative, cartItem) => acumulative + cartItem.qty, 0)} items)
+                    : $
+                    {cartItems.reduce((a,c) => a + c.price * c.qty, 0)}
+                </h3>
+                <button className="button primary" disabled={cartItems.length === 0}>
+                    Proceed to Checkout
+                </button>
         </div>
     </div>
 }

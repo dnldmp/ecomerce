@@ -65,7 +65,7 @@ function ProductScreen(props) {
                             </select>
                         </li>
                         <li>
-                            {product.countInStock > 0 && <button onClick={handleAddToCart} className="button">Add to Cart</button>}
+                            {product.countInStock > 0 && <button onClick={handleAddToCart} className="button primary">Add to Cart</button>}
                         </li>
                     </ul>
                 </div>

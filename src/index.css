@@ -245,15 +245,23 @@ a:hover{
   padding: 1rem;
 }
 
-.cart-list-container li img{
-  max-width: 10rem;
-  max-height: 10rem;
-}
-
-.cart-list-container li:first-child{
+.cart-list-container li{
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: .1rem #c0c0c0 solid;
+}
+
+.cart-list-container li:first-child{
+
+}
+
+
+.cart-list-container li img{
+  max-width: 10rem;
+  max-height: 10rem;
 }
 
 .cart-image{
@@ -266,4 +274,6 @@ a:hover{
 
 .cart-price{
   flex: 1 1;
+  font-size: 2.5rem;
+  text-align: right;
 }
